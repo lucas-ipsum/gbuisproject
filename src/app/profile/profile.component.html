@@ -1,0 +1,120 @@
+<div class="userprofile">
+  <div class="container">
+    <div class="tab">
+      <button class="tablinks" [class.btnActive]="activePage === 'profil'" (click)="open('profil')">Profil</button>
+      <button *ngIf="user?.rolle === 'Admin'" class="tablinks" [class.btnActive]="activePage === 'userrights'"
+        (click)="open('userrights')">Nutzer*innenrechte</button>
+    </div>
+
+    <div id="profil" class="tabcontent" [ngClass]="activePage === 'profil' ? 'active' : 'inactive'">
+      <h3 class="mb30">Mein Profil</h3>
+      <div *ngIf="userDataChanged" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Deine Daten wurden erfolgreich aktualisiert!
+      </div>
+      <div *ngIf="passwordChanged" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Passwort erfolgreich aktualisiert!
+      </div>
+      <div *ngIf="!editPW">
+        <form [formGroup]="updateProfile" (ngSubmit)="onSubmit()">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Herstellername:</td>
+                <td>
+                  <span *ngIf="!editMode">
+                    {{user?.herstellername}}
+                  </span>
+                  <span *ngIf="editMode">
+                    <input type="text" id="herstellername" class="form-control" [(ngModel)]="user.herstellername"
+                      formControlName="herstellername">
+                  </span>
+                </td>
+              <tr>
+                <td>Username:</td>
+                <td>
+                  <span *ngIf="!editMode">
+                    {{user?.username}}
+                  </span>
+                  <span *ngIf="editMode">
+                    <input type="text" id="username" class="form-control" [(ngModel)]="user.username"
+                      formControlName="username" (focus)="notfocused=false" (focusout)="notfocused=true">
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>E-Mail-Adresse:</td>
+                <td>
+                  <span *ngIf="!editMode">
+                    {{user?.email}}
+                  </span>
+                  <span *ngIf="editMode">
+                    <input type="email" class="form-control" id="email" formControlName="email"
+                      (focus)="notfocused=false" (focusout)="notfocused=true" [(ngModel)]="user.email">
+                    <span class="errormsg" *ngIf="f.email.errors?.email && notfocused">Bitte gebe eine gültige
+                      E-Mail-Adresse
+                      ein</span>
+                  </span>
+                </td>
+              </tr>
+              <tr *ngIf="user?.rolle ==='none'; else roleContent">
+                <td>Status:</td>
+                <td class="no-role">Noch nicht freigeschaltet</td>
+              </tr>
+              <ng-template #roleContent>
+                <tr>
+                  <td>Rolle:</td>
+                  <td>{{user?.rolle}}</td>
+                </tr>
+              </ng-template>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary" *ngIf="editMode" [disabled]="!updateProfile.valid">
+            Einstellungen speichern
+          </button>
+        </form>
+      </div>
+      <div *ngIf="editPW">
+        <form [formGroup]="updatePW" (ngSubmit)="onChangePW()">
+          <div class="card pw-container">
+            <div class="card-header">Passwort ändern</div>
+            <div class="card-body">
+              <label for="password">Altes Passwort:</label>
+              <input type="password" id="password" class="form-control" formControlName="oldPW"
+                (focus)="notfocused=false" (focusout)="notfocused=true">
+              <span class="errormsg" *ngIf="pw.oldPW.value !== user.password && notfocused">
+                Falsches Passwort
+              </span>
+              <label for="password" class="mt-2 w100">Neues Passwort:</label>
+              <input type="password" id="passwordNew" class="form-control" formControlName="newPW"
+                (focus)="notfocused=false" (focusout)="notfocused=true">
+              <label for="password" class="mt-2">Neues Passwort wiederholen:</label>
+              <input type="password" id="passwordNewConfirm" class="form-control" formControlName="newPWConfirm"
+                (focus)="notfocused=false" (focusout)="notfocused=true">
+              <span class="errormsg" *ngIf="pw.newPW.value !== pw.newPWConfirm.value && notfocused">
+                Die Passwörter stimmen nicht überein
+              </span>
+            </div>
+            <div class="card-footer">
+              <button type="submit" [disabled]="!updatePW.valid" class="btn btn-primary">
+                Passwort speichern
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <button (click)="editMode = true" *ngIf="!editMode && !editPW" class="btn btn-primary">
+        Profil bearbeiten
+      </button>
+      <button (click)="editPW = true" class="btn btn-primary btn-spacing" *ngIf="!editMode && !editPW">
+        Passwort ändern
+      </button>
+    </div>
+
+    <div id="userrights" class="tabcontent" *ngIf="user?.rolle === 'Admin'"
+      [ngClass]="activePage === 'userrights' ? 'active' : 'inactive'">
+      <app-userrights></app-userrights>
+    </div>
+  </div>
+</div>

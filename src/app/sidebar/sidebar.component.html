@@ -1,0 +1,12 @@
+<div *ngIf="!hideSidebar" class="sidebar">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Suche mit morphologischem
+    Kasten</a>
+  <a routerLink="/buisaz" routerLinkActive="active">BUIS von A-Z</a>
+  <a routerLink="/infomk" routerLinkActive="active">Informationen zum morphologischen
+    Kasten</a>
+  <a routerLink="/infobuisness" routerLinkActive="active">Was ist BUISness?</a>
+  <a *ngIf="loginStatus && user?.rolle !== 'none'" routerLink="/addbuis" routerLinkActive="active">BUIS hinzufügen</a>
+  <div class="sidebarFooter">
+    <a routerLink="/impressum">Impressum</a>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="section">
+
+  <h1>BUIS von A bis Z</h1>
+  <!--Suchleiste für BUIS -> NACH ABSPRACHE ERSTMAL WEG LASSEN! -> LIZA & STINE
+  <div class="input-group">
+    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="BUIS-Suche">
+    <div class="input-group-append">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+    </div>
+  </div> <br>-->
+  <!--ABC Leiste-->
+  <h2 class="abcliste">
+    <span *ngFor="let buchstabe of alphabet">
+      <a class="buchstabenAnchor" (click)="onClick(buchstabe)"> {{buchstabe}} </a>
+    </span>
+  </h2>
+
+  <!--ABC Auflistung für Webansicht-->
+  <!--M bis Z Tabellen Auflistung-->
+  <div *ngIf="!mobileHeader">
+    <aside>
+      <div *ngFor="let buchstabe of alphabetmz">
+        <p class="uebbuchstabe" id="{{buchstabe}}">{{buchstabe}}</p>
+        <div *ngFor="let buis of buisData">
+          <div *ngIf="buis.name?.toLowerCase().startsWith(buchstabe.toLowerCase())">
+            <div class="textanzeige" (click)="openDetailPage(buis.name)">{{buis.name}}</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!--A bis L Tabellen Auflistung-->
+    <section>
+      <div *ngFor="let buchstabe of alphabetal">
+        <p class="uebbuchstabe" id="{{buchstabe}}">{{buchstabe}}</p>
+        <div *ngFor="let buis of buisData">
+          <div *ngIf="buis.name?.toLowerCase().startsWith(buchstabe?.toLowerCase())">
+            <div class="textanzeige" (click)="openDetailPage(buis.name)">{{buis.name}}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--ABC Auflistung für Mobilansicht-->
+  <section *ngIf="mobileHeader">
+    <div *ngFor="let buchstabe of alphabet">
+      <p class="uebbuchstabe" id="{{buchstabe}}">{{buchstabe}}</p>
+      <div *ngFor="let buis of buisData">
+        <div *ngIf="buis.name?.toLowerCase().startsWith(buchstabe.toLowerCase())">
+          <div class="textanzeige" (click)="openDetailPage(buis.name)">{{buis.name}}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-floating-button></app-floating-button>
+</div>

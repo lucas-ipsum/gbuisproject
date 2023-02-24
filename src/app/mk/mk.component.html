@@ -1,0 +1,45 @@
+<div class="container mkContainer">
+  <div class="row tableheads">
+    <div class="col-sm-2 merkmal">Merkmal</div>
+    <div class="col-sm-10 merkmal">Ausprägung</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12 merkmal">An&shy;wen&shy;dungs&shy;ge&shy;bie&shy;te</div>
+    <div class="col-md col-12 auspraegung pointer my-auto" #mkKriterium id={{anwendungsgebiet}} (click)="!disabled && select($event)" *ngFor="let anwendungsgebiet of anwendungsgebiete">{{anwendungsgebiet}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12 merkmal">Be&shy;trach&shy;tungs&shy;ob&shy;jek&shy;te</div>
+    <div class="col-md col-12 auspraegung pointer my-auto" #mkKriterium id={{betrachtungsobjekt}} (click)="!disabled && select($event)"
+      *ngFor="let betrachtungsobjekt of betrachtungsobjekte">
+      {{betrachtungsobjekt}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12 merkmal">Be&shy;trach&shy;tungs&shy;kon&shy;zept</div>
+    <div class="col-md col-12 auspraegung pointer my-auto" #mkKriterium id={{betrachtungskonzept}} (click)="!disabled && select($event)"
+      *ngFor="let betrachtungskonzept of betrachtungskonzepte">
+      {{betrachtungskonzept}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12 merkmal">Be&shy;trach&shy;tungs&shy;gren&shy;zen</div>
+    <div class="col-md col-12 auspraegung pointer my-auto" #mkKriterium id={{betrachtungsgrenze}} (click)="!disabled && select($event)"
+      *ngFor="let betrachtungsgrenze of betrachtungsgrenzen">
+      {{betrachtungsgrenze}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12 merkmal">A&shy;dres&shy;sat/An&shy;wen&shy;der</div>
+    <div class="col-md col-12 auspraegung pointer my-auto" #mkKriterium id={{addressat}} (click)="!disabled && select($event)"
+      *ngFor="let addressat of adressatAnwender">{{addressat}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-12 merkmal">In&shy;te&shy;gra&shy;tions&shy;grad</div>
+    <div class="col-md col-12 auspraegung pointer my-auto" #mkKriterium id={{integration}}
+      [ngClass]="{'nonSelected': activeIntegration === null,'active': integration === activeIntegration, 'disabled' : integration !== activeIntegration }"
+      (click)="!disabled && select($event, integration)" *ngFor="let integration of integrationsgrad">{{integration}}
+    </div>
+  </div>
+</div>

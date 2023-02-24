@@ -1,0 +1,41 @@
+.loginSection {
+  text-align: left;
+  width: 100%;
+  margin: auto;
+  margin-top: 120px;
+
+  .form-control {
+    border-color: var(--light-blue-2);
+  }
+
+  .heading {
+    margin-bottom: 30px;
+  }
+
+  .mb10 {
+    margin-bottom: 10px;
+  }
+
+  .mt60 {
+    margin-top: 60px;
+  }
+
+  .btn {
+    float: right;
+    background-color: var(--light-blue);
+    color: var(--dark-grey);
+    border: none;
+    border-radius: 0%;
+    a {
+      color: var(--dark-grey);
+    }
+    &-login {
+      float: right;
+    }
+  }
+
+  .forgotPwd {
+    font-size: 15px;
+    line-height: 19px;
+  }
+}

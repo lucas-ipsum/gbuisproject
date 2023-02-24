@@ -1,0 +1,100 @@
+a {
+  color: var(--buisness-blue);
+  font-style: italic;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.container {
+  margin: auto;
+  margin-bottom: 35px;
+}
+
+.mkContainer {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  max-width: 100%;
+  border: 0.5px solid var(--buisness-blue);
+}
+
+.merkmal {
+  text-align: center;
+  padding: 5px;
+  border: 0.5px solid var(--buisness-blue);
+  background-color: var(--light-grey-3);
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  height: 90px;
+  overflow-wrap: break-word;
+  word-break:break-word;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.auspraegung {
+  text-align: center;
+  padding: 5px;
+  border: 0.5px solid var(--buisness-blue);
+  hyphens: auto;
+  height: 90px;
+  overflow-wrap: break-word;
+  word-break:break-word;
+  display: flex;
+  align-items: center;
+  overflow: overlay;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.default-cursor {
+  cursor: default;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .auspraegung {
+    font-size: 13px;
+  }
+  .merkmal {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .auspraegung {
+    height: auto;
+  }
+  .merkmal {
+    height: 40px;
+  }
+
+  .tableheads {
+    display: none;
+  }
+}
+
+.active {
+  background-color: var(--light-blue) !important;
+}
+
+.disabled {
+  background-color: var(--disable-color);
+}
+
+.nonSelected {
+  background-color: transparent;
+}

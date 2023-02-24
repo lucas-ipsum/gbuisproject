@@ -1,0 +1,79 @@
+/* Hier Styles rein, die in jeder Komponente verwendet werden können */
+
+* {
+	font-family: 'Open Sans Regular';
+	color: var(--dark-grey);
+}
+
+body {
+	margin: 0;
+	font-size: 18px;
+	overflow-x: hidden;
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.section {
+	margin-top: 90px;
+	text-align: center;
+	padding: 0px 50px 50px 50px;
+}
+
+// important, sodass andere styles überschrieben werden
+.BUISnessLogo {
+	color: white !important;
+  font-family: "Ubuntu Mono Regular" !important;
+  font-size: 36px !important;
+  line-height: 46px !important;
+}
+
+.BUISnessLogo-mobile {
+	color: white !important;
+  font-family: "Ubuntu Mono Regular" !important;
+	font-size: 21px !important;
+	line-height: 26px !important;
+}
+
+// headline Styles
+
+h1 {
+	color: var(--dark-grey);
+	font-size: 26px !important;
+	font-weight: bold;
+}
+
+h3 {
+	color: var(--dark-grey);
+  text-align: center;
+  padding-top: 30px;
+	
+}
+
+// fonts
+
+@font-face {
+	font-family: "Ubuntu Mono Regular";
+	src: url("/assets/fonts/UbuntuMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Ubuntu Mono Bold";
+	src: url("/assets/fonts/UbuntuMono-bold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Open Sans Regular";
+	src: url("/assets/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Open Sans Light";
+	src: url("/assets/fonts/OpenSans-Light.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Open Sans Bold";
+	src: url("/assets/fonts/OpenSans-Bold.ttf") format("truetype");
+}

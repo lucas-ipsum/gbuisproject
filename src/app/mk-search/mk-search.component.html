@@ -1,0 +1,67 @@
+<div class="section">
+  <div class="row">
+    <div class="col-sm-11 fliesstext">
+      <h1>BUIS-Suche mit einem morphologischen Kasten</h1>
+      Die Suche mit dem morphologischen Kasten dient dazu, die BUIS nach bestimmten Kriterien zu filtern. Die Liste der
+      aufgeführten BUIS ändert sich, sobald eine weitere Merkmalsausprägung an- oder abgewählt wird. Der/ die Nutzer*in
+      kann so passgenau
+      seine/ihre Anforderungen
+      spezifizieren. Anhand der gewünschten Funktionalitäten werden dann passende BUIS angezeigt, welche über die
+      jeweiligen
+      Detailseiten näher
+      betrachtet werden könne. Weitere Informationen zum verwendeten morphologischen Kasten finden Sie unter <a
+        routerLink="/infomk">Infos zum morphologischen Kasten</a>.
+    </div>
+  </div>
+  <app-mk [disabled]="false" [component]="'filter'" (buis)="getBuis($event)"></app-mk>
+</div>
+<app-floating-button></app-floating-button>
+<div class="container">
+  <div class="row sort">
+    <div class="input-group sortField mb-3">
+      <select class="form-control" id="selectSortField" [(ngModel)]="selectedField">
+        <option value="" disabled selected>Sortieren nach...</option>
+        <option value="name">Name des BUIS</option>
+        <option value="company">Name des Herstellers</option>
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-light" [disabled]="!selectedField" (click)="sort(buisData, true)"><i
+            class="fa fa-sort-alpha-asc"></i></button>
+        <button class="btn btn-light" [disabled]="!selectedField" (click)="sort(buisData, false)"><i
+            class="fa fa-sort-alpha-desc"></i></button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!buisData?.length">
+    <p id="noResults">Es konnten keine BUIS mit dieser Auswahl gefunden werden. Bitte passen Sie die ausgewählten
+      Ausprägungen an, um Ergebnisse angezeigt zu bekommen.</p>
+  </div>
+  <div class="card buisAnzeige" *ngFor="let buis of buisData">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-9 col-sm-8 col-12">
+          <h1 class="card-title">{{buis.name}}</h1>
+          <div class="card-text">
+            <b>Hersteller*in: </b>{{buis.company ? buis.company : 'Unbekannt'}}
+          </div>
+          <div class="card-text">
+            <b>Anwendung: </b> <span id="anwendung">{{buis.typ ? buis.typ : 'Unbekannt'}}</span>
+          </div>
+          <div class="card-text" *ngIf="buis?.website">
+            <b>
+              <a href="{{buis.website}}" target="_blank">
+                Zur Webseite <i class="fa fa-external-link-square"></i>
+              </a>
+            </b>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-4 col-12">
+          <img id="logo" *ngIf="buis?.logo" alt="Logo des Anbieters" src="{{buis.logo}}" />
+          <button type="button" (click)="openDetailPage(buis.name)" class="buttonDetails">
+            Details zu <b>{{buis.name}} </b>
+            <i class="fa fa-arrow-circle-o-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

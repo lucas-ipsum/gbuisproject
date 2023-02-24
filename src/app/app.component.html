@@ -1,0 +1,5 @@
+<app-header [mobileHeader]="mobileHeader" (LoginStatus)="getStatus($event)" (myOutput)="GetChildData($event)"></app-header>
+<app-sidebar [hideSidebar]="sidebarHidden"  [loginStatus]="loginStatus"></app-sidebar>
+<div class="wrapper" [ngClass]="mobileHeader ? 'wrapper' : 'wrapper-desktop'">
+  <router-outlet></router-outlet>
+</div>

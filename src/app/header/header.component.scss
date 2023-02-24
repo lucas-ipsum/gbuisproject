@@ -1,0 +1,92 @@
+.navbar {
+  padding: 6px;
+  background-color: var(--buisness-blue);
+
+  a {
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .mobile-search {
+    width: 100%;
+
+    li {
+      width: 100%;
+    }
+  }
+
+  span {
+    background-color: transparent;
+    border: none;
+  }
+
+  button {
+    color: var(--light-grey);
+  }
+
+  &-mobile {
+    ul {
+      display: -webkit-inline-box;
+    }
+  }
+
+  i {
+    color: var(--light-grey);
+    margin-left: 5px;
+    font-size: 25px;
+    vertical-align: middle;
+  }
+
+  .mobile-icon {
+    font-size: 18px;
+  }
+
+  .login {
+    color: var(--light-grey);
+  }
+  select {
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+
+  .autocomplete {
+    background-color: transparent;
+    border: 2px solid var(--light-grey);
+    padding: 10px;
+    width: 300px;
+    height: 39px;
+    color: var(--light-grey);
+  }
+
+  .mobileInput {
+    width: 100%;
+  }
+  ::placeholder { 
+    color: var(--light-grey);
+    opacity: 1; 
+  }
+
+  .results {
+    width: 300px;
+    background-color: white; 
+    position: absolute;
+    box-shadow: 0px -2px 4px 6px rgba(92, 92, 92, 0.2);
+    &-items {
+      border-top: 1px solid var(--light-grey);
+      padding: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--light-grey-2);
+      }
+    }
+  }
+
+  .mobileResults {
+    width: 96%;
+  }
+
+  .cursive {
+    font-style: italic;
+  }
+}

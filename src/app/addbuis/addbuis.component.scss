@@ -1,0 +1,59 @@
+.formular {
+    text-align: left;
+}
+
+[class^=col-] {
+  padding-left: 0px;
+}
+
+.einleitung {
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border: 1px solid var(--light-blue-2);
+  border-radius: 2px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.btn {
+  background-color: var(--light-blue);
+  color: var(--dark-grey);
+  border: none;
+  border-radius: 0%;
+  margin-bottom: 60px;
+  float: right;
+  margin-right: 20px;
+  a {
+    color: var(--dark-grey);
+  }
+}
+
+.box{
+  background-color: var(--light-grey-3);
+  padding: 20px 20px 20px 20px;
+  margin-top: 20px;
+}
+
+.text {
+  text-align: center;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+      font-size: 29px;
+  }
+  p{
+      font-size: 18px;
+  }
+  .text {
+      font-size: 14px;
+  }
+}

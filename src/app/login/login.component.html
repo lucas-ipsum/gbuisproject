@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="loginSection">
+    <h1 class="heading">Einloggen</h1>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="loginFailed" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Fehler</strong> {{errorMessage}}
+      </div>
+      <div class="row mb10">
+        <div class="col-sm-3"><label for="username">Username</label></div>
+        <div class="col-lg-6 col-sm-9"><input type="text" class="form-control" id="username" formControlName="username">
+        </div>
+      </div>
+      <div class="row mb10">
+        <div class="col-sm-3"><label for="password">Passwort</label></div>
+        <div class="col-lg-6 col-sm-9">
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-9 col-sm-12">
+          <button type="submit" class="btn btn-primary btn-login" [disabled]="!profileForm.valid">Anmelden</button>
+        </div>
+      </div>
+    </form>
+
+    <h1 class="heading mt60">Registrieren</h1>
+    <div class="row">
+      <div class="col-lg-9 col-sm-12 mb10">
+        Sie sind Hersteller*in eines BUIS und wollen in BUISness gelistet werden? Registrieren Sie sich jetzt um Ihre BUIS in die Datenbank hinzuzufügen.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-sm-12">
+        <button class="btn btn-primary"><a routerLink="/register">Jetzt registrieren</a></button>
+      </div>
+    </div>
+  </div>
+</div>

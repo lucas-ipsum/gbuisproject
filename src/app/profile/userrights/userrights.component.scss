@@ -1,0 +1,47 @@
+.btn:focus {
+  box-shadow: none;
+}
+.centered {
+  text-align: center;
+}
+.filter {
+  color: var(--dark-grey);
+}
+.filterActive {
+  color: var(--blue);
+}
+.w100 {
+  width: 100%;
+}
+.no-items {
+  color: lightgrey;
+  font-style: italic;
+  margin: 15px;
+}
+.user-container {
+  border-radius: 2px;
+  width: 95%;
+  margin: 20px auto 10px auto;
+  .btn-container {
+    display: table; 
+    text-align: right;
+    .btn-holder {
+      display: table-cell;
+      vertical-align: bottom;
+      button {
+        background-color: var(--light-grey-3);
+        color: var(--darker-grey);
+        border: 1px solid var(--light-grey-3);
+        border-radius: 2px;
+        height: 38px;
+        font-size: 16px;
+      }
+      .activeRole {
+        background-color: var(--light-blue);
+      }
+      .mr10 {
+        margin-right: 10px;
+      }
+    }  
+  }
+}

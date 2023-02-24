@@ -1,0 +1,100 @@
+<div class="section" *ngIf="!formSuccessfullySubmitted">
+    <h1>BUIS hinzufügen</h1>
+    <div class="row">
+        <div class="col-sm-12 einleitung">
+            <b>Kontaktdaten Ansprechpartner*in:</b>
+        </div>
+    </div>
+    <div class="formular">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="namebuis">Name des BUIS</label></div>
+                <div class="col-sm-7"><input type="text" class="form-control" id="namebuis" formControlName="namebuis">
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="hersteller">Hersteller*in</label></div>
+                <div class="col-sm-7"><input type="text" id="hersteller" class="form-control"
+                        formControlName="hersteller"></div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="anwendung">Anwendung</label></div>
+                <div class="col-sm-7"><input type="text" class="form-control" id="anwendung"
+                        formControlName="anwendung">
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="website">Internetseite</label></div>
+                <div class="col-sm-7"><input type="text" class="form-control" id="website" formControlName="website">
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="logo">Logo als URL-Link</label></div>
+                <div class="col-sm-7"><input type="text" class="form-control" id="logo" formControlName="logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 einleitung">
+                    <b>Kontaktdaten Ansprechpartner*in:</b>
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="name">Name</label></div>
+                <div class="col-sm-7"><input type="text" class="form-control" id="name" formControlName="name">
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="email">E-Mail</label></div>
+                <div class="col-sm-7"><input type="email" class="form-control" id="email" formControlName="email"
+                        (focus)="notfocused=false" (focusout)="notfocused=true">
+                    <span class="errormsg" *ngIf="f.email.errors?.email && notfocused">
+                        Bitte gebe eine gültige
+                        E-Mail-Adresse ein
+                    </span>
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="telefon">Telefonnummer</label></div>
+                <div class="col-sm-7"><input type="number" class="form-control" id="telefon" formControlName="telefon">
+                </div>
+            </div>
+            <div class="row mb10">
+                <div class="col-sm-3"><label for="beschreibung">Beschreibung</label></div>
+                <div class="col-sm-7"> <textarea class="form-control" id="beschreibung" rows="5"
+                        formControlName="beschreibung"
+                        placeholder="Hier können Sie noch eine Beschreibung der wichtigsten Funktionalitäten des BUIS einfügen."></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 einleitung">
+                    Bitte sortieren Sie das BUIS in den unten stehenden morphologischen Kasten ein, indem Sie
+                    alle zutreffenden Merkmalsausprägungen anwählen. Nähere Informationen zum verwendeten
+                    morphologischen
+                    Kasten finden Sie <a routerLink="/infomk">hier</a>.
+                </div>
+            </div>
+            <app-mk [disabled]="false" [component]="'add'" (selectedMKs)="getMKs($event)"></app-mk>
+            <div *ngIf="buisAlreadyInUse" class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Fehler</strong> Für dieses BUIS existiert bereits ein Eintrag.
+            </div>
+            <div class="btn-row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">
+                        BUIS hinzufügen
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <app-floating-button></app-floating-button>
+</div>
+
+<div class="section" *ngIf="formSuccessfullySubmitted">
+    <h1>BUIS hinzufügen</h1>
+    <div class="box">
+        <div class="text">
+            <b>BUIS erfolgreich hinzugefügt!</b> Vielen Dank für die Übermittlung der Daten. 
+        </div>
+    </div>
+</div>

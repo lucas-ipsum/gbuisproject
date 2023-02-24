@@ -1,0 +1,77 @@
+<nav class="navbar fixed-top navbar-expand-sm" *ngIf="!mobileHeader">
+  <a class="navbar-brand BUISnessLogo" routerLink="/">
+    BUISness
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li>
+      <input autocomplete="off" id="field" class="form-control autocomplete" type="text" [(ngModel)]="inputValue"
+        placeholder="BUIS-Suche">
+      <div class="results" *ngIf="focused">
+        <div class="results-items" *ngFor="let buis of buisData | filterBuis: inputValue"
+          (click)="openDetailPage(buis.name)">{{buis.name}}
+        </div>
+        <div class="results-items cursive" *ngIf="(buisData | filterBuis: inputValue).length === 0 && inputValue">
+          Keine BUIS gefunden
+        </div>
+      </div>
+    </li>
+    <li>
+      <button *ngIf="loggedIn" type="button" class="btn"><a class="login" routerLink="/profil">Mein Profil</a><i
+          class="fa fa-user-circle-o"></i></button>
+    </li>
+    <li>
+      <button *ngIf="!loggedIn" type="button" class="btn"><a class="login" routerLink="/login">Anmelden</a><i
+          class="fa fa-sign-in"></i></button>
+      <button *ngIf="loggedIn" type="button" class="btn"><a class="login" (click)="logout()">Abmelden</a><i
+          class="fa fa-sign-out"></i></button>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-mobile fixed-top" *ngIf="mobileHeader">
+  <div>
+    <button class="btn" (click)="openSidebar()">
+      <i class="fa fa-times" *ngIf="!showSidebar"></i>
+      <i class="fa fa-bars" *ngIf="showSidebar"></i>
+    </button>
+  </div>
+  <a class="navbar-brand BUISnessLogo BUISnessLogo-mobile" routerLink="/">
+    BUISness
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li *ngIf="showSearch && !smallWindow">
+      <input type="text" class="autocomplete" placeholder="BUIS-Suche" [(ngModel)]="inputValue">
+      <div class="results" *ngIf="focused">
+        <div class="results-items" *ngFor="let buis of buisData | filterBuis: inputValue"
+          (click)="openDetailPage(buis.name)">{{buis.name}}
+        </div>
+        <div class="results-items cursive" *ngIf="(buisData | filterBuis: inputValue).length === 0 && inputValue">
+          Keine BUIS gefunden
+        </div>
+      </div>
+    </li>
+    <li>
+      <button type="button" (click)="showSearch = !showSearch" class="btn">
+        <i class="fa fa-search mobile-icon "></i>
+      </button>
+    </li>
+    <li>
+      <a routerLink="/login"><button type="button" class="btn">
+          <i class="fa fa-user-circle-o mobile-icon "></i></button>
+      </a>
+    </li>
+  </ul>
+  <ul class="navbar-nav mobile-search" *ngIf="showSearch && smallWindow">
+    <li>
+      <input type="text" class="autocomplete mobileInput" placeholder="BUIS-Suche" [(ngModel)]="inputValue">
+      <div class="results mobileResults" *ngIf="focused">
+        <div class="results-items" *ngFor="let buis of buisData | filterBuis: inputValue"
+          (click)="openDetailPage(buis.name)">{{buis.name}}
+        </div>
+        <div class="results-items cursive" *ngIf="(buisData | filterBuis: inputValue).length === 0 && inputValue">
+          Keine BUIS gefunden
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>

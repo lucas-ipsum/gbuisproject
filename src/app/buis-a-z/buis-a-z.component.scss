@@ -1,0 +1,60 @@
+h2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.buchstabenAnchor {
+    color: var(--buisness-blue);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 26px;
+    margin-left: 1%;
+}
+.textanzeige {
+    text-align: left;
+    padding-left: 5%;
+    padding-bottom: 1.5px;
+    color: var(--dark-grey);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+}
+.uebbuchstabe{
+    font-size: 26px;
+    color: var(--buisness-blue);
+}
+
+section {
+    padding: 1% 10%;
+    width: 48%;
+    text-align: left; 
+}
+aside {
+    float: right;
+    padding: 1% 5%;
+    width: 48%;
+    text-align: left;
+}
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 29px;
+    }
+    .buchstabenAnchor {
+        font-size: 18px;
+    }
+    .textanzeige {
+        text-align: left;
+        padding-left: 5%;
+        padding-bottom: 1.5px;
+        color: var(--dark-grey);
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .uebbuchstabe{
+        font-size: 18px;
+    }
+    
+    section {
+        width: 88%;
+    }
+  }

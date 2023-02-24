@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="regSection" *ngIf="!regSuccess">
+    <h1 class="heading">Registrieren</h1>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="emailAlreadyInUse" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Fehler</strong> Für diese E-Mail-Adresse existiert bereits ein Konto
+      </div>
+      <div *ngIf="usernameAlreadyInUse" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Fehler</strong> Dieser Nutzername existiert bereits
+      </div>
+      <div class="row mb10">
+        <div class="col-sm-3"><label for="herstellername">Name der/s Hersteller*in</label></div>
+        <div class="col-lg-6 col-sm-9">
+          <input type="text" class="form-control" id="herstellername" formControlName="herstellername">
+        </div>
+      </div>
+      <div class="row mb10">
+        <div class="col-sm-3"><label for="email">E-Mail-Adresse</label></div>
+        <div class="col-lg-6 col-sm-9"><input type="email" class="form-control" id="email" formControlName="email"
+            (focus)="notfocused=false" (focusout)="notfocused=true">
+          <span class="errormsg" *ngIf="f.email.errors?.email && notfocused">Bitte gebe eine gültige E-Mail-Adresse
+            ein</span>
+        </div>
+      </div>
+      <div class="row mb10">
+        <div class="col-sm-3"><label for="username">Username</label></div>
+        <div class="col-lg-6 col-sm-9"><input type="text" class="form-control" id="username" name="username"
+            formControlName="username"></div>
+      </div>
+      <div class="row mb10">
+        <div class="col-sm-3"><label for="password">Passwort</label></div>
+        <div class="col-lg-6 col-sm-9"><input type="password" class="form-control" id="password"
+            formControlName="passwort" (focus)="notfocused=false" (focusout)="notfocused=true">
+        </div>
+      </div>
+      <div class="row mb30">
+        <div class="col-sm-3"><label for="confirmPasswort">Passwort wiederholen</label></div>
+        <div class="col-lg-6 col-sm-9"><input type="password" class="form-control" id="confirmPasswort"
+            formControlName="confirmPasswort" (focus)="notfocused=false" (focusout)="notfocused=true">
+          <span class="errormsg" *ngIf="f.passwort.value !== f.confirmPasswort.value && notfocused">Die
+            Passwörter
+            stimmen nicht
+            überein</span>
+        </div>
+      </div>
+      <div class="row mb30">
+        <div class="col-lg-3 col-sm-3 col-1">
+          <input type="checkbox" class="mr15" formControlName="AGBAccepted" id="AGBAccepted">
+        </div>
+        <div class="col-lg-6 col-sm-9 col-10 col-3">
+          Ich stimme den <a routerLink="/impressum" fragment="nutzungsbedingungen"> Nutzungsbedingungen</a> und der
+          <a routerLink="/impressum" fragment="datenschutz"> Datenschutzordnung</a> von BUISness zu.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-6">
+          <a routerLink="/login" class="back-login"><i class="fa fa-angle-double-left"></i> Zurück zum Login</a>
+        </div>
+        <div class="col-lg-5 col-sm-6 col-6 btn-row">
+          <button type="submit" class="btn btn-reg btn-primary"
+            [disabled]="!profileForm.dirty || !profileForm.valid || isDisabled">Kostenlos
+            registrieren</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="successMsg" *ngIf="regSuccess">
+    <div class="card m-auto">
+      <div class="card-header"><b>Registrierung erfolgreich!</b></div>
+      <div class="card-body">
+        Du kannst dich nun mit deinem Account anmelden.
+        Sobald dir eine Rolle zugewiesen wurde ist dein Konto freigeschaltet und kannst du eigene BUIS erstellen.
+        Den Status der Freischaltung kannst du in deinem Profil unter Rolle prüfen.
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <a routerLink="/login">
+            Zum Login <i class="fa fa-sign-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

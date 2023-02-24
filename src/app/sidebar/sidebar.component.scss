@@ -1,0 +1,39 @@
+.sidebar {
+  height: 100%;
+  width: 255px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--buisness-blue);
+  overflow-x: hidden;
+  padding-top: 68px;
+
+  a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--light-grey);
+    display: block;
+    border-top: 1px solid var(--light-grey);
+  }
+
+  &:hover {
+    color: var(--light-grey-2);
+  }
+
+  .sidebarFooter {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .active {
+    background-color: var(--light-blue);
+    color: var(--dark-grey);
+  }
+}
+
+
+

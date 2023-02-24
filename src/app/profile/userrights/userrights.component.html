@@ -1,0 +1,43 @@
+<h3 class="mb-3">Nutzer*innenrechte verwalten</h3>
+<!-- <div class="row">
+  <div class="col-sm-6 m-auto">
+    <input type="text" class="form-control" placeholder="Suche nach User">
+  </div>
+</div>
+<br />-->
+<div class="row">
+  <div class="col-sm-8 m-auto centered">
+    <button class="btn filter" [class.filterActive]="activeRole === 'All'"
+      (click)="activeRole = 'All'">Alle Nutzer*innen</button>
+    <button class="btn filter" [class.filterActive]="activeRole === 'Admin'"
+      (click)="activeRole = 'Admin'">Administrator*innen</button>
+    <button class="btn filter" [class.filterActive]="activeRole === 'User'" (click)="activeRole = 'User'">User</button>
+    <button class="btn filter" [class.filterActive]="activeRole === 'none'" (click)="activeRole = 'none'">Ohne Rolle</button>
+  </div>
+</div>
+<div class="card user-container" *ngFor="let user of allUser | filterUser: activeRole">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <label class="w100">Username: <span>{{user.username}}</span></label>
+        <label class="mt-2 w100">Herstellername: <span>{{user.herstellername}}</span></label>
+        <label class="mt-2 w100">E-Mail-Adresse: <span>{{user.email}}</span></label>
+      </div>
+      <div class="col-sm-6 btn-container">
+        <div class="btn-holder">
+          <button type="button" class="btn btn-primary mr10" [ngClass]="{'activeRole' : user.rolle === 'User'}"
+            (click)="changeRole(user, 'User')">User-Rechte</button>
+          <button type="button" class="btn btn-primary" [ngClass]="{'activeRole' : user.rolle === 'Admin'}"
+            (click)="changeRole(user, 'Admin')">Administrator-Rechte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="m-auto">
+    <div *ngIf="(allUser | filterUser: activeRole).length === 0 && activeRole" class="no-items">Keine Einträge
+      gefunden</div>
+  </div>
+</div>
+<app-floating-button></app-floating-button>

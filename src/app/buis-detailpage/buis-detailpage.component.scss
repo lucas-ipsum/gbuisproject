@@ -1,0 +1,74 @@
+
+.section {
+  text-align: left;
+}
+
+@media only screen and (max-width: 767px) {
+  .section {
+    padding: 0px 10px 10px 10px;
+    text-align: left;
+  }
+}
+
+#logo {
+  float: right;
+  width: 200px;
+}
+
+@media only screen and (max-width: 990px) {
+  #logo {
+    float: left;
+  }
+}
+
+i {
+  padding: 5px;
+}
+
+p {
+  text-align: left;
+}
+
+#long_text {
+  text-align: justify;
+  padding-left: 0;
+  padding-right: 2%;
+}
+
+.addit_info {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.buisAnzeige {
+  text-align: left;
+  padding-left: 20px;
+}
+
+td {
+  border: none;
+}
+
+.headline {
+  margin-top: 105px;
+  margin-bottom: 35px;
+}
+
+span {
+  font-weight: bold;
+}
+.backbutton {
+  color: var(--buisness-blue);
+  cursor: pointer;
+}
+section {
+  padding-left: 20px;
+  width: 10%;
+  text-align: left;
+}
+aside {
+  float: right;
+  text-align: left;
+  width: 60%;
+
+}

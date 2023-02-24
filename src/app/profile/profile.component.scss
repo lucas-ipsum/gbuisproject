@@ -1,0 +1,117 @@
+.userprofile {
+  .container {
+    margin-top: 126px;
+    margin-bottom: 60px;
+  }
+  
+  .tab {
+    overflow: hidden;
+    border: 1px solid var(--buisness-blue);
+    background-color: var(--buisness-blue);
+
+    .tablinks {
+      color: var(--light-grey);
+    }
+
+    button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      &:hover {
+        background-color: var(--hover-blue);
+        color: white;
+      }
+    }
+    .btnActive {
+      background-color: var(--hover-blue);
+      color: white;
+    }
+  }
+  .active{
+    display: block;
+  }
+  .inactive {
+    display: none;
+  }
+  .tabcontent {
+    padding: 6px 12px;
+    border: 1px solid var(--buisness-blue);
+    border-top: none;
+  }
+  .no-role {
+    background-color: crimson;
+    color: white;
+  }
+  .mb30 {
+    margin-bottom: 30px;
+  }
+  .mt10 {
+    margin-top: 10px;
+  }
+
+  .w100 {
+    width: 100%;
+  }
+
+  .btn-spacing {
+    margin-left: 0.5rem;
+  }
+
+  @media only screen and (max-width: 359px) {
+    .btn-spacing {
+      margin-top: 10px;
+      margin-left: 0px;
+    }
+  }
+
+  .errormsg {
+    font-size: 12px;
+    color: red;
+  }
+
+  .table tr:last-of-type {
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .btn-primary {
+    background-color: var(--buisness-blue);
+    border-color: var(--buisness-blue);
+    &:hover {
+      background-color: var(--hover-blue);
+      border-color: var(--hover-blue);
+      color: white;
+    }
+  }
+  .form-control {
+    border: 1px solid var(--light-blue-2);
+    border-radius: 2px;
+  }
+  .card {
+      border: 1px solid var(--light-blue-2);
+  }
+
+  .pw-container {
+    width: 300px;
+    margin: 0 auto 30px auto;
+    .card-header {
+      background-color: var(--buisness-blue);
+      color: white;
+      border-bottom: 1px solid var(--buisness-blue);
+    }
+    .card-footer {
+      background-color: white;
+      border-top:none
+    }    
+  }
+
+  @media only screen and (max-width: 359px) {
+    .pw-container {
+      width: 265px;
+    }
+  }
+}
+

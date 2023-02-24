@@ -1,0 +1,72 @@
+<div class="section">
+  <div class="row headline">
+    <div class="col-lg-5 col-sm-4 col-4">
+      <h1>
+        <a routerLink="/"><i class="fa fa-angle-double-left backbutton"></i></a>
+      </h1>
+    </div>
+    <div class="col-lg-6 col-sm-6 col-6">
+      <h1>{{buisName}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-9 col-lg-9 col-sm-12">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <span>Hersteller: </span>{{buis?.company ? buis?.company : 'Unbekannt'}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Anwendung: </span>{{buis?.typ ? buis?.typ : 'Unbekannt'}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Kontakt: </span>{{buis?.contact_name ? buis?.contact_name : 'Unbekannt'}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Telefonnummer: </span>{{buis?.contact_phone ? buis?.contact_phone : 'Unbekannt'}} <a
+                href="tel:{{buis?.contact_phone}}"><i class="fa fa-phone-square" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Email: </span>{{buis?.contact_mail ? buis?.contact_mail : 'Unbekannt'}} <a
+                href="mailto:{{buis?.contact_mail}}"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+          <tr *ngIf="buis?.website">
+            <td>
+              <a href="{{buis?.website}}" target="_blank">
+                <b>Zur Webseite</b> <i class="fa fa-external-link-square"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xl-3">
+      <img id="logo" *ngIf="buis?.logo" alt="Logo des Anbieters" src="{{buis?.logo}}" />
+    </div>
+  </div>
+  <div class="row" *ngIf="MKempty; else showMK">
+    <div class="col-lg-12">
+      <i>Für dieses BUIS sind keine Kriterien im morphologischem Kasten hinterlegt.</i>
+    </div>
+  </div>
+  <ng-template #showMK>
+    <app-mk *ngIf="mkKriterien" [disabled]="true" [mkCriteriaBUIS]="mkKriterien" (MKempty)="getValue($event)">
+    </app-mk>
+  </ng-template>
+  <div class="addit_info" *ngIf="buis?.info_text">
+    <span>Weitere Informationen:</span>
+    <p id="long_text">{{buis?.info_text}}</p>
+  </div>
+
+  <app-floating-button></app-floating-button>
+</div>
